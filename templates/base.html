@@ -10,10 +10,26 @@
     {% block content %} {% endblock %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    <script>
+    <script type="text/javascript">
+        document.querySelectorAll('.select-wrapper').forEach(t => t.addEventListener('click', e=>e.stopPropagation()));
         $(document).ready(function() {
             $('.collapsible').collapsible();
+            $('select').material_select();
         });
+        $('.datepicker').pickadate({
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 15, // Creates a dropdown of 15 years to control year,
+            today: 'Today',
+            clear: 'Clear',
+            close: 'Ok',
+            closeOnSelect: false // Close upon selecting a date,
+            // container: undefined // ex. 'body' will append picker to body
+
+        });
+        $('.datepicker').on('mousedown', function(event) {
+            event.preventDefault();
+        });
+        
     </script>
 </body>
 
